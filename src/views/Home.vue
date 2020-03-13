@@ -1,6 +1,6 @@
 <template>
-  <section class="column is-half is-offset-one-quarter">
-    <section id="search">
+  <div class="column is-half">
+    <section>
       <b-field position="is-centered">
         <b-input placeholder="Search" type="search" icon="magnify"></b-input>
       </b-field>
@@ -14,7 +14,7 @@
         <b-tab-item label="异步社区"></b-tab-item>
       </b-tabs>
     </section>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -22,9 +22,3 @@ export default {
   name: 'Home'
 }
 </script>
-
-<style>
-  #search {
-    margin-top: 30%;
-  }
-</style>
