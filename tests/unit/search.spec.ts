@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Search from '@/components/Search.vue'
 import Vue from 'vue'
 import Buefy from 'buefy'
- 
+
 Vue.use(Buefy)
 
 describe('Search.vue', () => {
