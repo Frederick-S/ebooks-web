@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import bus from '../bus'
 import spinner from '../spinner'
 
 @Component
@@ -17,6 +18,8 @@ export default class Search extends Vue {
   search() {
     if (this.bookName) {
       spinner.open()
+
+      bus.$emit('getBooks', this.bookName)
     }
   }
 }

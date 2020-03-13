@@ -12,8 +12,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import bus from '../bus'
+import spinner from '../spinner'
 
 @Component
 export default class Books extends Vue {
+  getBooks(bookName: string) {
+    console.log(bookName)
+
+    setTimeout(() => spinner.close(), 3000)
+  }
+
+  mounted() {
+    bus.$on('getBooks', this.getBooks)
+  }
 }
 </script>
