@@ -1,29 +1,5 @@
 # ebooks-web
+[![Build Status](https://travis-ci.org/Frederick-S/ebooks-web.svg?branch=master)](https://travis-ci.org/Frederick-S/ebooks-web) [![Build status](https://ci.appveyor.com/api/projects/status/b6m1v2uta4i0c93s/branch/master?svg=true)](https://ci.appveyor.com/project/Frederick-S/ebooks-web/branch/master)
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+[MIT](LICENSE)
