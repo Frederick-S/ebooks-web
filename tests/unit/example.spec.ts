@@ -1,12 +1,16 @@
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Search from '@/components/Search.vue'
+import Vue from 'vue'
+import Buefy from 'buefy'
+ 
+Vue.use(Buefy)
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+describe('Search.vue', () => {
+  it('Has a input', () => {
+    const wrapper = shallowMount(Search, {
+      stubs: ['b-input']
     })
-    expect(wrapper.text()).toMatch(msg)
+
+    expect(wrapper.find('b-input-stub').exists()).toBe(true)
   })
 })

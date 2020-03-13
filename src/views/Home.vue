@@ -1,10 +1,6 @@
 <template>
   <div class="column is-half">
-    <section>
-      <b-field position="is-centered">
-        <b-input placeholder="Search" type="search" icon="magnify"></b-input>
-      </b-field>
-    </section>
+    <Search></Search>
     <section>
       <b-tabs position="is-centered">
         <b-tab-item label="微信读书"></b-tab-item>
@@ -18,7 +14,12 @@
 </template>
 
 <script>
+import Search from '@/components/Search.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Search
+  }
 }
 </script>
