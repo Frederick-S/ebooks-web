@@ -8,13 +8,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import spinner from '../spinner'
 
 @Component
 export default class Search extends Vue {
   private bookName = ''
 
   search() {
-    console.log(this.bookName)
+    if (this.bookName) {
+      spinner.open()
+    }
   }
 }
 </script>
