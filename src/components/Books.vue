@@ -12,15 +12,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import axios from '../axios'
 import bus from '../bus'
 import spinner from '../spinner'
+import toast from '../toast'
 
 @Component
 export default class Books extends Vue {
   getBooks(bookName: string) {
-    console.log(bookName)
-
-    setTimeout(() => spinner.close(), 3000)
+    axios.get(`/v1.0/ebooks?provider=weread&book_name=${bookName}`)
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => [
+        toast.danger(error)
+      ])
+      .finally(() => {
+        spinner.close()
+      })
   }
 
   mounted() {

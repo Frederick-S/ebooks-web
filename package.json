@@ -29,6 +29,7 @@
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-typescript": "^5.0.1",
     "@vue/test-utils": "1.0.0-beta.32",
+    "axios": "^0.19.2",
     "buefy": "^0.8.13",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
