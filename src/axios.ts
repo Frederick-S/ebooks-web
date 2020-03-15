@@ -4,7 +4,7 @@ axios.defaults.baseURL = process.env.VUE_APP_API_SERVER_URL
 
 axios.interceptors.response.use((response) => {
   if (response.status === 200) {
-    return response.data
+    return response
   } else {
     console.error(response)
 

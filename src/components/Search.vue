@@ -1,7 +1,7 @@
 <template>
   <section>
     <b-field position="is-centered">
-      <b-input placeholder="Search" type="search" icon="magnify" @keyup.enter.native="search" v-model="bookName"></b-input>
+      <b-input placeholder="Search" type="search" icon="magnify" @keyup.enter.native="search" v-model="title"></b-input>
     </b-field>
   </section>
 </template>
@@ -13,13 +13,13 @@ import spinner from '../spinner'
 
 @Component
 export default class Search extends Vue {
-  private bookName = ''
+  private title = ''
 
   search() {
-    if (this.bookName) {
+    if (this.title) {
       spinner.open()
 
-      bus.$emit('getBooks', this.bookName)
+      bus.$emit('getBooks', this.title)
     }
   }
 }
