@@ -1,7 +1,23 @@
 <template>
   <section>
     <b-tabs position="is-centered">
-      <b-tab-item v-for="(bookProvider, index) in bookProviders" :key="index" :label="bookProvider.label"></b-tab-item>
+      <b-tab-item v-for="(bookProvider, index) in bookProviders" :key="index" :label="bookProvider.name">
+        <slot>
+          <div class="columns is-multiline book-list">
+            <div class="column is-half" v-for="(book, index) in bookProvider.pagedBook.books" :key="index">
+              <div class="columns">
+                <div class="column is-one-third">
+                  <img class="book-cover" :src="book.cover" />
+                </div>
+                <div class="column">
+                  <h1 class="book-title">{{ book.title }}</h1>
+                  <p>{{ book.author }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </slot>
+      </b-tab-item>
       </b-tabs>
   </section>
 </template>
@@ -18,36 +34,45 @@ interface PagedBooks {
   [key: string]: PagedBook;
 }
 
+interface BookProvider {
+  key: string;
+
+  name: string;
+
+  pagedBook: PagedBook;
+}
+
 @Component
 export default class Books extends Vue {
   private title = ''
 
   private bookProvider = 'weread'
 
-  private pagedBooks: PagedBooks = {
-    'weread': new PagedBook()
-  }
-
-  private bookProviders = [
+  private bookProviders: BookProvider[] = [
     {
       key: 'weread',
-      label: '微信读书'
+      name: '微信读书',
+      pagedBook: new PagedBook()
     },
     {
       key: 'duokan',
-      label: '多看阅读'
+      name: '多看阅读',
+      pagedBook: new PagedBook()
     },
     {
       key: 'douban',
-      label: '豆瓣阅读'
+      name: '豆瓣阅读',
+      pagedBook: new PagedBook()
     },
     {
       key: 'turing',
-      label: '图灵社区'
+      name: '图灵社区',
+      pagedBook: new PagedBook()
     },
     {
       key: 'epubit',
-      label: '异步社区'
+      name: '异步社区',
+      pagedBook: new PagedBook()
     }
   ]
 
@@ -56,8 +81,15 @@ export default class Books extends Vue {
 
     axios.get(`/v1.0/ebooks?provider=${this.bookProvider}&title=${this.title}`)
       .then((data) => {
-        const pagedBook = this.pagedBooks[this.bookProvider]
-        pagedBook.books = data.data
+        const bookProvider = this.bookProviders.find(bookProvider => bookProvider.key === this.bookProvider)
+
+        if (!bookProvider) {
+          toast.danger(`Could not find the book provider with the specified name: ${this.bookProvider}`)
+
+          return
+        } else {
+          bookProvider.pagedBook.books = data.data
+        }
       })
       .catch((error) => [
         toast.danger(error)
@@ -72,3 +104,18 @@ export default class Books extends Vue {
   }
 }
 </script>
+
+<style scoped>
+  .book-list {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .book-cover {
+    max-width: 80px;
+  }
+
+  .book-title {
+    font-weight: bold;
+  }
+</style>
