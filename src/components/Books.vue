@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-tabs position="is-centered">
+    <b-tabs position="is-centered" @input="changeBookProvider">
       <b-tab-item v-for="(bookProvider, index) in bookProviders" :key="index" :label="bookProvider.name">
         <slot>
           <div class="columns is-multiline book-list">
@@ -76,8 +76,12 @@ export default class Books extends Vue {
     }
   ]
 
-  getBooks(title: string) {
-    this.title = title
+  getBooks(title?: string) {
+    if (title) {
+      this.title = title
+    }
+
+    spinner.open()
 
     axios.get(`/v1.0/ebooks?provider=${this.bookProvider}&title=${this.title}`)
       .then((data) => {
@@ -97,6 +101,18 @@ export default class Books extends Vue {
       .finally(() => {
         spinner.close()
       })
+  }
+
+  changeBookProvider(index: number) {
+    const bookProvider = this.bookProviders[index]
+
+    if (!bookProvider || bookProvider.key === this.bookProvider || !this.title) {
+      return
+    }
+
+    this.bookProvider = bookProvider.key
+
+    this.getBooks()
   }
 
   mounted() {
