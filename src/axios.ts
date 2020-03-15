@@ -6,13 +6,9 @@ axios.interceptors.response.use((response) => {
   if (response.status === 200) {
     return response
   } else {
-    console.error(response)
-
     return Promise.reject('Server error')
   }
 }, (error) => {
-  console.error(error)
-
   return Promise.reject(error.message)
 })
 
