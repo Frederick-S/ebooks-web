@@ -12,6 +12,7 @@
                 <div class="column">
                   <h1 class="book-title">{{ book.title }}</h1>
                   <p>{{ book.author }}</p>
+                  <p v-if="book.price !== 0.0">¥{{ book.price.toFixed(2) }}</p>
                 </div>
               </div>
             </div>
