@@ -106,11 +106,15 @@ export default class Books extends Vue {
   changeBookProvider(index: number) {
     const bookProvider = this.bookProviders[index]
 
-    if (!bookProvider || bookProvider.key === this.bookProvider || !this.title) {
+    if (!bookProvider || bookProvider.key === this.bookProvider) {
       return
     }
 
     this.bookProvider = bookProvider.key
+
+    if (!this.title) {
+      return
+    }
 
     this.getBooks()
   }
