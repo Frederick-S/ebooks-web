@@ -74,6 +74,11 @@ export default class Books extends Vue {
       key: 'epubit',
       name: '异步社区',
       pagedBook: new PagedBook()
+    },
+    {
+      key: 'kindle',
+      name: 'Kindle',
+      pagedBook: new PagedBook()
     }
   ]
 
