@@ -4,7 +4,7 @@
 This repository is mainly for personal use, it helps me to quickly find where to buy a ebook when I already know the title of a book. The server side code is [here](https://github.com/Frederick-S/ebooks-api).
 
 ## Known issue
-Requests sent to `Amazon` might be occasionally blocked.
+Requests sent to `www.amazon.cn` might be occasionally blocked.
 
 ## License
 [MIT](LICENSE)
