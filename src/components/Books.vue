@@ -79,6 +79,11 @@ export default class Books extends Vue {
       key: 'kindle',
       name: 'Kindle',
       pagedBook: new PagedBook()
+    },
+    {
+      key: 'jd',
+      name: '京东',
+      pagedBook: new PagedBook()
     }
   ]
 
