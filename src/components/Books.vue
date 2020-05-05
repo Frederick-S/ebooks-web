@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="book-list-wrap">
     <b-tabs position="is-centered" @input="changeBookProvider">
       <b-tab-item v-for="(bookProvider, index) in bookProviders" :key="index" :label="bookProvider.name">
         <slot>
@@ -137,6 +137,11 @@ export default class Books extends Vue {
 </script>
 
 <style scoped>
+  .book-list-wrap {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
   .book-list {
     max-height: 400px;
     overflow-y: auto;

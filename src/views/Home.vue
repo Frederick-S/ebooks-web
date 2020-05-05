@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-half">
+  <div class="column">
     <Search></Search>
     <Books></Books>
   </div>
