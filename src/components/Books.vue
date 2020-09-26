@@ -19,7 +19,7 @@
           </div>
         </slot>
       </b-tab-item>
-      </b-tabs>
+    </b-tabs>
   </section>
 </template>
 
