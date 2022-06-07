@@ -8,8 +8,5 @@ yarn
 yarn serve
 ```
 
-## Known issue
-Requests sent to `www.amazon.cn` might be occasionally blocked.
-
 ## License
 [MIT](LICENSE)
